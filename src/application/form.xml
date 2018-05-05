@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<FlowPane id="mainpane" fx:id="mainpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="590.0" prefWidth="1085.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+    <children>
+        <BarChart fx:id="barchart1" barGap="2.0" layoutY="8.0" prefHeight="498.0" prefWidth="1085.0" style="-fx-bar-fill: green;">
+            <xAxis>
+                <CategoryAxis endMargin="0.0" side="BOTTOM" startMargin="0.0" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis prefHeight="364.0" prefWidth="33.0" side="LEFT" upperBound="0.0" />
+            </yAxis>
+        </BarChart>
+        <BarChart fx:id="barchart2" barGap="2.0" layoutY="8.0" prefHeight="498.0" prefWidth="1085.0" style="-fx-bar-fill: blue;">
+            <xAxis>
+                <CategoryAxis endMargin="0.0" side="BOTTOM" startMargin="0.0" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis prefHeight="364.0" prefWidth="33.0" side="LEFT" upperBound="0.0" />
+            </yAxis>
+        </BarChart>
+       </children>
+</FlowPane>
