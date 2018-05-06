@@ -24,12 +24,15 @@ import javafx.scene.layout.FlowPane;
 public class Main extends Application {
 	
 	private BarChart<String, Number> buildChart(String folderPath, String chartTitle) throws IOException{
-		final CategoryAxis xAxis = new CategoryAxis();
+
+	    final CategoryAxis xAxis = new CategoryAxis();
         final NumberAxis yAxis = new NumberAxis();
-        final BarChart<String,Number> bc = 
-            new BarChart<String,Number>(xAxis,yAxis);
+
+        final BarChart<String,Number> bc =
+            new BarChart<>(xAxis,yAxis);
         bc.setTitle(chartTitle);
-        xAxis.setLabel("Peers capacity");  
+
+        xAxis.setLabel("Peers capacity");
         yAxis.setLabel("Average battery drain");
         
         yAxis.setAutoRanging(false);
@@ -58,7 +61,7 @@ public class Main extends Application {
 		for(Map.Entry<Integer, Double> data : plotData.entrySet()) {
 			Integer capacity = data.getKey();
 			Double result = data.getValue();
-			serie.getData().add(new XYChart.Data<String, Double>(String.valueOf(capacity), result));
+			serie.getData().add(new XYChart.Data<>(String.valueOf(capacity), result));
 		}
 		
 		bc.getData().add(serie);
