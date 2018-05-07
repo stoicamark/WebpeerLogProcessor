@@ -9,6 +9,9 @@ import base.LogProcessor;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.scene.Group;
+import javafx.scene.layout.Background;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import javafx.scene.Node;
@@ -32,7 +35,7 @@ public class Main extends Application {
             new BarChart<>(xAxis,yAxis);
         bc.setTitle(chartTitle);
 
-        xAxis.setLabel("Peers capacity");
+        xAxis.setLabel("Peer capacities");
         yAxis.setLabel("Average battery drain");
         
         yAxis.setAutoRanging(false);
@@ -71,8 +74,8 @@ public class Main extends Application {
 		bc.setPrefHeight(350);
 		bc.setPadding(new Insets(20));
 		bc.setLegendVisible(false);
-		
-		return bc;
+
+        return bc;
 	}
 	
 	@Override
@@ -89,11 +92,14 @@ public class Main extends Application {
 		
 		bc2.lookupAll(".default-color0.chart-bar")
         .forEach(n -> n.setStyle("-fx-bar-fill: #78909C;"));
+
+        FlowPane flowPane = new FlowPane();
+        flowPane.getChildren().addAll(bc1, bc2);
+
+        Group group = new Group();
+        group.getChildren().addAll(flowPane);
 		
-		FlowPane flowPane = new FlowPane();
-		flowPane.getChildren().addAll(bc1, bc2);
-		
-		Scene scene = new Scene(flowPane, 750, 750);
+		Scene scene = new Scene(group, 750, 750, Color.WHITE);
 		stage.setScene(scene);
 		stage.show();
 

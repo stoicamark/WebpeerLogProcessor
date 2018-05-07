@@ -18,6 +18,7 @@ import model.LogEntry;
 import model.Printer;
 import model.TestResult;
 import util.MapUtil;
+import util.Statistics;
 
 public class LogProcessor {
 	
@@ -47,7 +48,7 @@ public class LogProcessor {
 		    return plotData;
         }
 
-        Printer.printMap(testResults);
+        //Printer.printMap(testResults);
 
 		Map<Integer, CumulativeTestResult> aTestResults = cumulateResults();
 		
@@ -66,6 +67,14 @@ public class LogProcessor {
 		}
 		
 		Printer.printMap(plotData);
+
+        Statistics statistics = new Statistics(Objects.requireNonNull(
+                MapUtil.getValues(plotData, 100.0)));
+
+        System.out.println("Variance: " + statistics.getVariance());
+        System.out.println("Standard deviation: " + statistics.getStdDev());
+
+        System.out.println();
 		
 		return MapUtil.sort(plotData);
 	}
